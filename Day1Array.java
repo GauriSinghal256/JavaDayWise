@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Day1 {
+public class Day1Array {
 
     // linear Search 
     public static int Linearsearch(int arr[] , int key){
@@ -168,6 +168,19 @@ public class Day1 {
     }
 
     // Buying and Selling stocks 
+    public static int BuyAndSell(int prices[]){
+        int buyPrice = Integer.MAX_VALUE;
+        int maxProfit = 0;
+        for(int i=0 ; i<prices.length ;i++){
+            if(buyPrice < prices[i]){
+                int profit = prices[i] - buyPrice;
+                maxProfit = Math.max(maxProfit , profit); 
+            }else{
+                buyPrice  = prices[i];
+            }
+        }
+        return maxProfit;
+    }
 
     // Sorted And Rotated Array 
     
