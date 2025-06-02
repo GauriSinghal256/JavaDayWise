@@ -2,8 +2,16 @@ import java.util.Arrays;
 
 public class Day1Array {
 
+    // just remember a method Arrays.toString()
+
+
+
+
     // linear Search 
     public static int Linearsearch(int arr[] , int key){
+        if(arr.length == 0){
+            return -1;
+        }
         for(int i=0 ; i<arr.length ; i++){
             if(arr[i] == key){
                 return i;
@@ -183,9 +191,49 @@ public class Day1Array {
     }
 
     // Sorted And Rotated Array 
+
+    // search in a string 
+    public static boolean searchStr(String str , char target){
+        if(str.length() == 0){
+            return false;
+        }
+
+        for(int i=0 ; i<str.length() ; i++){
+            if(target == str.charAt(i)){
+                return true;
+            }
+        }
+        return false;
+    }
+    // search in a string 
+    // using a for each loop 
+    public static boolean searchStr2(String str , char target){
+        if(str.length() == 0){
+            return false;
+        }
+
+        for(char ch : str.toCharArray()){
+            if(ch == target){
+                return true;
+            }
+        }
+        return false;
+    }
     
-
-
+    // Search in range 
+    // its just the simple linear search just we are given the range of index where we need to find the element 
+    // so here instead of running the loop for all elements we will run the loop in the desired range
+    public static int searchInRange(int arr[] , int key , int start , int end){
+        if(arr.length == 0){
+            return -1;
+        }
+        for(int i=start ; i<end ; i++){
+            if(arr[i] == key){
+                return i;
+            }
+        }
+        return -1;
+    }
 
 
 
@@ -198,6 +246,7 @@ public class Day1Array {
         }
         return false;
     }
+
 
 
 
@@ -229,9 +278,14 @@ public class Day1Array {
         // System.out.println(kadanAlgo(arr));
         // int height[] = {4,2,0,6,3,2,5};
         // System.out.println(TrappingRainwater(height));
-        System.out.println(ContainDuplicate(arr));
+        // System.out.println(ContainDuplicate(arr));
+        // String name = "gauri";
+        // char target = 'u';
+        // System.out.println(searchStr( name , target));
 
+        // System.out.println(Arrays.toString(name.toCharArray()));
 
+  
 
 
         
