@@ -1,3 +1,4 @@
+package day2;
 import java.util.*;
 
 public class Day2ArrayList {

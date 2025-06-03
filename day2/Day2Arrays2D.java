@@ -1,6 +1,7 @@
+package day2;
+
 import java.util.*;
-public class Day2Arrays2D {
-    
+public class Day2Arrays2D {    
     // Linear Search in 2D array 
     public static int[] search(int arr[][], int key){
         for(int i=0 ; i<arr.length ; i++){
