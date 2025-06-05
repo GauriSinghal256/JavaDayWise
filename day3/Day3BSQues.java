@@ -131,8 +131,41 @@ public class Day3BSQues {
         }
         return -1;
     }
-      
+    // https://leetcode.com/problems/peak-index-in-a-mountain-array/description/
 
+      public static int peakIndeexInMountainArray(int arr[]){
+        int start =0;
+        int end = arr.length -1;
+
+        while(start<end){
+            int mid = start + (end - start)/2;
+            if(arr[mid] > arr[mid+1]){
+                // you are in the dec part of the array 
+                // this may be the answer but look at left 
+                // this is why end ! = mid -1;
+                end = mid;
+            }else{
+                // you are in des part of array 
+                start = mid+1; //because we know taht mid+1 element is greater than mid element
+
+            }
+        }
+        // in the end start will going to be equal to end and poiinting to the largest number of the array
+        // start and end are always trying to find max element in the above 2 checks 
+        // so when they are pointing to just one element , that is the maximum one because that is what the checks says 
+        return start;
+      }
+
+
+    //   https://leetcode.com/problems/find-in-mountain-array/description/
+   
+
+
+
+    // Searcch in Rotated Sorted array 
+    // google and amazon interview question 
+    // https://leetcode.com/problems/search-in-rotated-sorted-array/description/
+    
 
 
 
