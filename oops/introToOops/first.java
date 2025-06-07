@@ -1,12 +1,11 @@
-
-
+package introToOops;
 
 public class first{
     public static void main(String[] args) {
 
 
         // object is a physical reality - actually occuping space
-        Student[] students  = new Student[5];
+        // Student[] students  = new Student[5];
 
         Student gauri = new Student();
 

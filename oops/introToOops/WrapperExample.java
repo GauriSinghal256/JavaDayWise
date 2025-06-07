@@ -1,3 +1,5 @@
+package introToOops;
+
 public class WrapperExample{
     public static void main(String[] args){
         // a is primitive
@@ -5,7 +7,7 @@ public class WrapperExample{
         // int b = 20;
         // num is object
         // we have so many functions with the objects that we can use to easy our work
-        Integer num = 45;
+        // Integer num = 45;
 
         // swap(a,b);
         // System.out.println(a + " " + b);
@@ -14,7 +16,7 @@ public class WrapperExample{
         swap2(a,b);
         System.out.println(a+" "+b);
 
-        final int bonus = 2;
+        // final int bonus = 2;
         // bonus = 3;
         // it is giving error because we cannot modify it 
 
