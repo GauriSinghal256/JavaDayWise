@@ -5,31 +5,147 @@ When you declare an object of a class, you are creating an instance of that clas
 Thus, a class is a logical construct. An object has physical reality. (That is, an object occupies space in memory.)
 
 Objects are characterized by three essential properties: state, identity, and behavior.
-The state of an object is a value from its data type. The identity of an object distinguishes one object from another.
-It is useful to think of an object’s identity as the place where its value is stored in memory.
-The behavior of an object is the effect of data-type operations.
+The state of an object is a value from its data type.
+class Student {
+    String name;
+    int age;
+}
 
-The dot operator links the name of the object with the name of an instance variable.
-Although commonly referred to as the dot operator, the formal specification for Java categorizes the . as a separator.
+Student s = new Student();
+s.name = "Gauri";
+s.age = 20;
+
+name = "Gauri" and age = 20 represent the state of this object.
+
+ The identity of an object distinguishes one object from another.
+It is useful to think of an object’s identity as the place where its value is stored in memory.
+The identity of an object is what makes it unique among other objects.
+Even if two objects have the same state (same field values),
+they are still different if they are different instances (i.e., different memory addresses).
+he behavior of an object is defined by the methods it can perform — basically, what the object can do or what can be done to it.
+
+class Student {
+    void study() {
+        System.out.println("Student is studying");
+    }
+}
+
+
+// THE DOT operator
+
+In Java, the dot operator (.) is used to access members (variables or methods) of a class or object.
+Although we commonly call it the dot operator, Java’s formal specification classifies . as a separator, not an operator. 
+But in practice, it's still widely called the dot operator.
+There are two primary uses:
+1.Accessing instance variables and methods 
+
+Student s1 = new Student();
+s1.name = "Gauri";     // dot operator to access 'name' variable
+s1.study();            // dot operator to call 'study' method
+
+2. Accessing Static Members via Class Name
+Math.sqrt(16);         // 'Math' is the class, 'sqrt()' is a static method
+
+// The "new" keyword
+
 The 'new' keyword dynamically allocates(that is, allocates at run time)memory for an object & returns a reference to it.
 This reference is, more or less, the address in memory of the object allocated by new.
 This reference is then stored in the variable.
 Thus, in Java, all class objects must be dynamically allocated.
 
-Box mybox; // declare reference to object
-     mybox = new Box(); // allocate a Box object
-The first line declares mybox as a reference to an object of type Box. At this point, mybox does not yet refer to an
-actual object. The next line allocates an object and assigns a reference to it to mybox. After the second line executes,
-you can use mybox as if it were a Box object. But in reality, mybox simply holds, in essence, the memory address of the
-actual Box object.
-The key to Java’s safety is that you cannot manipulate references as you can actual pointers.
-Thus, you cannot cause an object reference to point to an arbitrary memory location or manipulate it like an integer.
+Box mybox;         // Step 1: Declare reference to object
+mybox = new Box(); // Step 2: Allocate memory for a new Box object
+
+
+✅ Step-by-Step Breakdown:
+📌 Step 1: Box mybox;
+You're declaring a reference variable named mybox of type Box.
+This means mybox can hold the memory address of a Box object, but right now it doesn’t point to anything. It's just a reference, not the object itself.
+At this point, mybox is like an empty pointer, i.e., null.
+
+📌 Step 2: mybox = new Box();
+new Box() creates a new object of type Box in the heap memory.
+The new keyword allocates memory and returns the reference (or address) of that object.
+That reference is now stored in mybox.
+So now, mybox points to the actual Box object in memory.
+
+✅ In Java:
+You cannot assign a memory address manually.
+You can only assign a reference that Java created with new.
+Java handles memory addresses behind the scenes — you don’t see or touch them.
+
+
 
 A Closer Look at new:
 classname class-var = new classname ( );
 Here, class-var is a variable of the class type being created. The classname is the name of the class that is being
-instantiated. The class name followed by parentheses specifies the constructor for the class. A constructor defines
-what occurs when an object of a class is created.
+instantiated. The class name followed by parentheses specifies the constructor for the class. 
+A constructor defines what occurs when an object of a class is created.
+🔹 Definition:
+A constructor is a block of code that gets called automatically when an object is created using the new keyword.
+ It is used to initialize the object’s state (i.e., set default or initial values to fields).
+
+🔹 Key Rules of Constructors:
+1. Constructor name must match the class name.
+2. No return type, not even void.
+3. It is automatically invoked when an object is created.
+4. You can define multiple constructors (constructor overloading).
+
+
+🔹 Types of Constructors in Java:
+1.Default Constructor – no parameters.
+class Car {
+    Car() {
+        System.out.println("Car object created");
+    }
+}
+
+Car myCar = new Car();  // Constructor is called here
+
+2. Parameterized Constructor – takes arguments to initialize fields.
+class Student {
+    String name;
+    int age;
+
+    Student(String n, int a) {
+        name = n;
+        age = a;
+    }
+}
+
+Student s1 = new Student("Gauri", 20); // Constructor with parameters
+
+3. Copy Constructor (not built-in like in C++, but can be created manually in java).
+class Student {
+    String name;
+    int age;
+
+    // Parameterized constructor
+    Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // Copy constructor
+    Student(Student other) {
+        this.name = other.name;
+        this.age = other.age;
+    }
+
+    void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Student s1 = new Student("Gauri", 20); // Original object
+        Student s2 = new Student(s1);          // Copy constructor
+
+        s1.display();  // Output: Name: Gauri, Age: 20
+        s2.display();  // Output: Name: Gauri, Age: 20
+    }
+}
 
 You might be wondering why you do not need to use new for such things as integers or characters.
 The answer is that Java’s primitive types are not implemented as objects.
@@ -49,10 +165,33 @@ object, you are only making a copy of the reference.
 int square(int i){
     return i * i;
 }
+
 A parameter is a variable defined by a method that receives a value when the method is called. For example,
 in square( int i), i is a parameter. An argument is a value that is passed to a method when it is invoked.
 For example, square(100) passes 100 as an argument. Inside square( ), the parameter i receives that value.
 
 NOTE:
 Bus bus = new Bus();
-lhs(reference i.e. bus) is looked by compiler & rhs (object i.e. new Bus()) is looked by jvm
+Here’s what happens step by step, and how compiler and JVM are involved:
+
+🔹 1. Bus bus – LHS (Left-Hand Side)
+This is a reference variable declaration.
+The compiler checks if:
+The class Bus exists.
+The reference bus is declared with a valid type.
+It reserves memory for the reference, but not for the actual object.
+At this point, bus is like an empty handle that can later point to a Bus object.
+📌 Handled by: ✅ Compiler
+
+🔹 2. new Bus() – RHS (Right-Hand Side)
+This part creates a new object of type Bus.
+The new keyword tells the JVM to:
+Allocate memory on the heap for the Bus object.
+Call the constructor Bus() to initialize it.
+Return the reference (address) of that object.
+📌 Handled by: ✅ JVM
+
+🔁 Assignment Operation:
+After new Bus() is executed by the JVM, the returned reference (address) is assigned to the reference variable bus.
+Now bus points to the newly created object in memory.
+
