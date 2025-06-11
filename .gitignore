@@ -17,5 +17,8 @@ BoxWeight.class
 Main.class
 rec.class
 sort.class
+DoubleLL.class
+DoubleLL$Node.class
 linkedListt.class
 linkedListt$Node.class
+llJavaColl.class
