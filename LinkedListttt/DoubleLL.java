@@ -13,7 +13,7 @@ public class DoubleLL {
         public static Node tail;
         public static int size;
 
-        // add
+        // add at first 
         public void addFirst(int data){
             Node newNode = new Node(data);
             size++ ;
@@ -24,6 +24,19 @@ public class DoubleLL {
             newNode.next = head;
             head.prev = newNode;
             head = newNode;
+        }
+
+        // add at last 
+        public void addLast (int data){
+            Node newNode = new Node(data);
+            size++;
+            if(head == null){
+                head = tail = newNode;
+                return;
+            }
+            tail.next = newNode;
+            newNode.prev = tail;
+            tail = newNode;
         }
 
         // print
@@ -37,6 +50,58 @@ public class DoubleLL {
         }
 
         // remove first 
+        public int removeFirst(){
+            if(head == null){
+                System.out.println("Linked List is empty");
+                return Integer.MIN_VALUE;
+            }
+            if(head.next == null){
+                int var = head.data;
+                head = tail = null;
+                size--;
+                return var;
+            }
+            int var = head.data;
+            head = head.next;
+            head.prev = null;
+            size--;
+            return var;
+        }
+
+
+        // remove last
+        public int removeLast(){
+            if(head == null){
+                System.out.println("Linked List is empty");
+                return Integer.MIN_VALUE;
+            }
+            if(head.next == null){
+                int var = head.data;
+                head = tail = null;
+                size--;
+                return var;
+            }
+            int var = tail.data;
+            tail = tail.prev;
+            tail.next = null;
+            size--;
+            return var;
+        }
+
+        // reverse a doubly linked list 
+        public void reverse(){
+            Node curr = head;
+            Node prev = null;
+            Node next;
+            while(curr!=null){
+                next = curr.next;
+                curr.next = prev;
+                curr.prev = next;
+                prev = curr;
+                curr = next;
+            }
+            head = prev;
+        }
         
 
 
@@ -44,6 +109,10 @@ public class DoubleLL {
             DoubleLL ll = new DoubleLL();
             ll.addFirst(2);
             ll.addFirst(1);
+            ll.addLast(3);
+            ll.addLast(4);
+            ll.removeFirst();
+            ll.removeLast();
             ll.print();
         }
 
