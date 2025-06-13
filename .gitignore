@@ -25,3 +25,9 @@ llJavaColl.class
 recArray.class
 CircularLL.class
 CircularLL$Node.class
+StackQues.class
+StackUsingAl.class
+StackUsingAl$Stack.class
+StackUsingLL.class
+StackUsingLL$Node.class
+StackUsingLL$Stack.class
