@@ -36,3 +36,8 @@ circularQueueUsingArr.class
 circularQueueUsingArr$Queue.class
 queueUsingArr$Queue.class
 queueUsingArr.class
+queueUsing2stack.class
+queueUsing2stack$Queue.class
+queueUsingLL.class
+queueUsingLL$Node.class
+queueUsingLL$Queue.class
