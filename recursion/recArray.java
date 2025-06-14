@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+package recursion;
+
+import java.util.*;
 
 public class recArray {
 
