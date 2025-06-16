@@ -41,3 +41,5 @@ queueUsing2stack$Queue.class
 queueUsingLL.class
 queueUsingLL$Node.class
 queueUsingLL$Queue.class
+stackUsing2queue.class
+stackUsing2queue$Stack.class
