@@ -43,3 +43,5 @@ queueUsingLL$Node.class
 queueUsingLL$Queue.class
 stackUsing2queue.class
 stackUsing2queue$Stack.class
+DequeJCF.class
+queueQues.class
