@@ -47,3 +47,6 @@ DequeJCF.class
 queueQues.class
 BinaryTree.class
 BinaryTree$Node.class
+Trees.class
+Trees$BinaryTree.class
+Trees$Node.class
