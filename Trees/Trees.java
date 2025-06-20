@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Trees {
    
     static class Node{
@@ -56,13 +58,37 @@ public class Trees {
             postOrder(root.right);
             System.out.print(root.data+" ");
             }
+            // level order 
+         public static void levelOrder(Node root){
+            if(root == null){
+                return;
+            }
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
+            q.add(null);
+
+            while(!q.isEmpty()){
+                Node currNode = q.remove();
+                if(currNode == null){
+                    System.out.println();
+                    if(q.isEmpty()){
+                        break;
+                    }else{
+                        q.add(null);
+                    }
+                }else{
+                    System.out.print(currNode.data + " ");
+                    if(currNode.left != null){
+                        q.add(currNode.left);
+                    }
+                    if(currNode.right != null){
+                        q.add(currNode.right);
+                    }
+                }
+            }
+         }
+
         }
-
-        // level order 
-        
-
-        
-
 
 
     public static void main(String[] args) {
@@ -72,7 +98,8 @@ public class Trees {
         // System.out.println(root.data);
         //tree.preorder(root);
         //tree.inorder(root);
-        tree.postOrder(root);
+        // tree.postOrder(root);
+        tree.levelOrder(root);
 
         
     }
