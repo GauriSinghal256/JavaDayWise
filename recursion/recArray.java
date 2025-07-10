@@ -1,4 +1,3 @@
-package recursion;
 
 import java.util.*;
 
@@ -68,13 +67,27 @@ public class recArray {
             findAllIndex(arr, target, index+1);
     }
 
+    //if we dont want to make the list outside so we can pass list in the arguments 
+    static ArrayList findallIndex2(int arr[] , int target , int index , ArrayList<Integer> list){
+      if(index == arr.length){
+        return list;
+      }
+      if(arr[index] == target){
+        list.add(index);
+      }
+      return findallIndex2(arr, target, index+1, list);
+    }
+
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5,2,6};
         //System.out.println(issorted(arr, 0));
         // System.out.println(search(arr, 6, 0));
         // System.out.println(find(arr, 6, 0));
-        findAllIndex(arr, 2, 0);
-        System.out.println(list);
+        // findAllIndex(arr, 2, 0);
+        // System.out.println(list);
+        ArrayList<Integer> list2 = new ArrayList<>();
+        findallIndex2(arr, 2, 0, list2);
+        System.out.println(list2);
 
         
     }
