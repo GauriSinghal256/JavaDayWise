@@ -177,6 +177,131 @@ public class BTQues {
         return root;
     }
 
+    // Check Subtree of another tree
+    public static boolean isSubtree(Node root , Node subroot){
+        if(root == null){
+            return false;
+        }
+        if(root.data == subroot.data){
+            if(isIdentical(root , subroot)){
+                return true;
+            }
+        } 
+        return isSubtree(root.left, subroot)|| isSubtree(root.right, subroot);
+    }
+
+    public static boolean isIdentical(Node root , Node subroot){
+       if(root == null && subroot == null){
+        return true;
+       }else if(root == null || subroot==null || root.data!= subroot.data){
+        return false;
+       }
+       if(!isIdentical(root.left, subroot.left)){
+        return false;
+       }
+       if(!isIdentical(root.right, subroot.right)){
+        return false;
+       }
+
+       return true;
+    }
+
+    // minimum distance between nodes 
+    public static int lcaDist(Node root ,int n){
+        if(root == null){
+            return -1;
+        }
+        if(root.data == n){
+            return 0;
+        }
+        int leftDis = lcaDist(root.left, n);
+        int rightDis = lcaDist(root.right, n);
+        if(leftDis == -1 && rightDis == -1){
+            return -1;
+        }
+        else if(leftDis == -1){
+            return rightDis+1;
+        }else{
+            return leftDis+1;
+        }
+    }
+
+    // kth ancestor of node 
+    public static int KAncestor(Node root , int n , int k){
+        if(root == null){
+            return -1;
+        }
+        if(root.data == n){
+            return 0;
+        }
+        int leftDis = KAncestor(root.left, n, k);
+        int rightDis = KAncestor(root.right, n, k);
+        if(leftDis== -1 && rightDis == -1){
+            return -1;
+        }
+        int max = Math.max(leftDis , rightDis);
+        if(max+1 == k){
+            System.out.println(root.data);
+        }
+        return max+1;
+   }
+
+  // Transform the tree to sumTree 
+   public static int Transform(Node root){
+    if(root == null){
+        return 0;
+    }
+    int leftChild = Transform(root.left);
+    int rightChild = Transform(root.right);
+
+    int data = root.data;
+    int newLeft = root.left==null? 0:root.left.data;
+    int newRight = root.right==null? 0:root.right.data;
+
+    root.data = leftChild +newLeft +rightChild +newRight;
+    return data;
+
+   }    
+    public static void preorder(Node root){
+            if(root == null){
+                return;
+            }
+            System.out.print(root.data+" ");
+            preorder(root.left);
+            preorder(root.right);
+    }
+
+    // Check if the binary tree is univalued or not 
+    public static boolean Univalued(Node root){
+        if(root == null){
+            return true;
+        }
+        if (root.left != null && root.left.data != root.data) {
+        return false;
+        }
+
+        if (root.right != null && root.right.data != root.data) {
+            return false;
+        }
+
+        return Univalued(root.left) && Univalued(root.right);
+    }
+
+    // Delete leaf nodes if valued as x 
+    public static Node deleteLeafX(Node root, int x) {
+    if (root == null) return null;
+
+    root.left = deleteLeafX(root.left, x);
+    root.right = deleteLeafX(root.right, x);
+
+    if (root.left == null && root.right == null && root.data == x) {
+        return null; 
+    }
+
+    return root; 
+}
+
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -186,6 +311,10 @@ public class BTQues {
         root.right.left = new Node(6);
         root.right.right = new Node(7);
 
+        Node subroot = new Node(2);
+        subroot.left = new Node(4);
+        //subroot.right = new Node(5);
+
         // System.out.println(height(root));
         // System.out.println(SumOfNodes(root));
         // System.out.println(SumOfNodes2(root));
@@ -193,8 +322,22 @@ public class BTQues {
         //System.out.println(diameter2(root).diam);
         // Klevel(root, 1, 3);
         //System.out.println(lca(root, 4, 6).data);
-        System.out.println(lca2(root, 4, 6).data);
+        //System.out.println(lca2(root, 4, 6).data);
+        // System.out.println(isSubtree(root, subroot));
+        // int ld = lcaDist(root, 4);
+        // int rd = lcaDist(root, 7);
+        // System.out.println(ld+rd);
 
+        // Transform(root);
+        // preorder(root);
+
+        Node Uni = new Node(2);
+        Uni.left = new Node(2);
+        Uni.right = new Node(2);
+        Uni.left.left= new Node(2);
+        Uni.left.right = new Node(5);
+        Uni.right.left = new Node(2);
+        System.out.println(Univalued(Uni));
 
 
         
