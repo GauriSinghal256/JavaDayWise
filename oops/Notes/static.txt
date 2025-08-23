@@ -98,3 +98,38 @@ Its effect is to declare that C is not an inner class. Just as a static method o
 body, C also has no current instance of T, nor does it have any lexically enclosing instances.
 Here, test does not have any instance of it's outer class Static. Neither does main.
 But main & Test can have instances of each other.
+
+
+
+
+// this is not dependent on objects
+static void fun() {
+    greeting(); 
+    // ❌ You can't use this because it requires an instance
+    // but the function you are using it in does not depend on instances
+}
+
+// we know that something which is not static, belongs to an object
+void greeting() {
+    System.out.println("Hello world");
+}
+
+✅ Key Points about static
+Static Members Belong to the Class, Not Objects
+
+A static method or variable is associated with the class itself.
+You can call a static method without creating an object.
+
+2. Non-static Members Belong to Objects (Instances)
+
+A non-static method requires an object of the class to be called because it may depend on instance variables.
+
+ClassName obj = new ClassName();
+obj.greeting();
+
+3. Why Static Cannot Directly Access Non-Static
+
+The method fun() is static, meaning it exists before any object of the class is created.
+The method greeting() is non-static, meaning it needs an object because it may work on instance data.
+At the time when a static method is loaded (before objects are created), there is no guarantee that an object exists to call a non-static method.
+
