@@ -1,6 +1,4 @@
 package day2;
-
-import java.util.*;
 public class Day2Arrays2D {    
     // Linear Search in 2D array 
     public static int[] search(int arr[][], int key){
@@ -87,10 +85,10 @@ public class Day2Arrays2D {
 
     public static int maximumWealth(int[][] accounts){
         int max = 0;
-        for(int i=0 ; i<accounts.length ; i++){
+        for (int[] account : accounts) {
             int sum = 0;
-            for(int j=0 ; j<accounts[i].length ; j++){
-               sum = sum+accounts[i][j];
+            for (int j = 0; j < account.length; j++) {
+                sum = sum + account[j];
             }
             if(sum >max){
                 max = sum;
@@ -137,8 +135,8 @@ public class Day2Arrays2D {
     
     public static void main(String[] args) {
         
-        Scanner sc = new Scanner(System.in);
-        int[][] arr = new int[3][3];     //number of rows are mandatory, number of columns are not mendatory
+       // Scanner sc = new Scanner(System.in);
+        //int[][] arr = new int[3][3];     //number of rows are mandatory, number of columns are not mendatory
         
         // If we perform sysop(arr2.length) it will give us the number of rows 
         // input
@@ -165,11 +163,11 @@ public class Day2Arrays2D {
         //     System.out.println(Arrays.toString(a));
         // }
 
-         int[][] arr2 = {
-            {1,2,3},
-            {4,5,6,1},
-            {7,8,9}
-        }; 
+        //  int[][] arr2 = {
+        //     {1,2,3},
+        //     {4,5,6,1},
+        //     {7,8,9}
+        // }; 
         // int target = 6;
         // int ans[] = search(arr2 , target);
         // System.out.println(Arrays.toString(ans));

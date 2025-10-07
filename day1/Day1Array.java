@@ -263,7 +263,7 @@ public class Day1Array {
         // }
 
         // linear Search
-        int arr[] = {2 , -4, 6 , 8 , -9 ,5 , 6};
+        //int arr[] = {2 , -4, 6 , 8 , -9 ,5 , 6};
         // System.out.println(Linearsearch(arr, 62));
         // System.out.println(Largest(arr));
         //  System.out.println(BinarySearch(arr, 62));
