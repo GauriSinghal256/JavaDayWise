@@ -1,4 +1,4 @@
-
+package recursion;
 import java.util.*;
 public class resStrings {
     // make a function using recursion which removes the a from the given string 

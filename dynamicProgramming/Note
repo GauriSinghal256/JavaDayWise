@@ -1,0 +1,47 @@
+frogJump optimised summary 
+
+In our optimized Frog Jump:
+
+int prev1 = 0;  // cost to reach stone 0
+int prev2 = 0;  // cost to reach stone (i - 2)
+
+
+At the start:
+
+We are on the 0th stone.
+
+The cost to reach the 0th stone is 0 (we haven’t jumped yet).
+
+There is no stone -1 or -2, but we still need variables for later steps, so we initialize both prev1 and prev2 with 0.
+
+🧩 Step-by-Step Reasoning
+Case 1: First Jump (i = 1)
+
+We only use prev1, not prev2:
+
+int oneStep = prev1 + |cost[1] - cost[0]|;   // ✅ valid
+int twoStep = Integer.MAX_VALUE;              // ❌ can't jump 2 steps yet
+
+
+At this moment:
+
+prev1 = dp[0] = 0
+
+prev2 isn’t used at all
+→ So even if it’s 0, it doesn’t affect the result.
+
+Case 2: Second Jump (i = 2)
+
+Now we’ll use both:
+
+int oneStep = prev1 + |cost[2] - cost[1]|;
+int twoStep = prev2 + |cost[2] - cost[0]|;
+
+
+Here’s what each means:
+
+prev1 → cost to reach stone 1
+
+prev2 → cost to reach stone 0
+
+Since dp[0] = 0, we initialize prev2 = 0 so that when we compute for i = 2, it matches the real dp value for stone 0.
