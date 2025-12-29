@@ -24,16 +24,17 @@ public class hashing {
 
         System.out.println(hm);
 
-        // Get 
+        // Get - O(1)
         int population = hm.get("India");
         System.out.println(population);
         System.out.println(hm.get("Indonesia"));
+        // if we try to get a key which is not present in the hashmap then it will return null
 
-        // containsKey
+        // containsKey - O(1)
         System.out.println(hm.containsKey("India")); 
         System.out.println(hm.containsKey("Indonesia")); 
 
-        // remove
+        // remove - O(1)
         System.out.println( hm.remove("China"));
         System.out.println(hm);
         System.out.println(hm.size());
@@ -46,9 +47,8 @@ public class hashing {
         for (String k : keys) {
             System.out.println("key=" + k + ", value=" + hm.get(k));
         }
-
-
-
-
+        // here if we call hm.keySet() it will return a set of keys
+        // and if we call hm.entrySet() it will return a set of key value pairs
+        
     }
 }

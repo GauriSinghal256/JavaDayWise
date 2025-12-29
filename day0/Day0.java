@@ -220,6 +220,23 @@ public class Day0 {
     }
 
 
+    // check whether a number is power of 2 
+    public static boolean isPowerOfTwo(int n){
+        if(n==0){
+            return false;
+        }
+        while(n!=1){
+            if(n%2 != 0){
+                return false;
+            }
+            n = n/2;
+        }
+        return true;
+    }
+     public static boolean isPowerOfTwo2(int n) {
+        if (n <= 0) return false; 
+        return (n & (n - 1)) == 0;
+    }
 
     public static void main(String[] args) {
         // NHTriangle(5);
