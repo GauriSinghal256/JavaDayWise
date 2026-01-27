@@ -1,5 +1,3 @@
-package recursion;
-
 public class rec {
 
     // print num from 1 to 10 

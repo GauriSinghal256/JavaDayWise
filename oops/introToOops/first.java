@@ -9,7 +9,7 @@ public class first{
 
         Student gauri = new Student();
 
-        // here everything we were doimg manually insted we can do it in the class only with the help of 
+        // here everything we were doing manually insted we can do it in the class only with the help of 
         // a special function called constructor . Constructor tells us that what to do when the object is being created
         gauri.name = "Gauri Singhal";
         gauri.rno = 11232628;
