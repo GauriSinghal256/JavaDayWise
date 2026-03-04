@@ -1,0 +1,70 @@
+🔢 LeetCode 261 — Graph Valid Tree
+📌 Problem Statement
+Given n nodes labeled from 0 to n - 1 and a list of undirected edges, determine whether these edges form a valid tree.
+You are given:
+An integer n → number of nodes
+A 2D array edges where edges[i] = [a, b] means there is an undirected edge between node a and node b.
+Your task is to return true if the graph forms a valid tree, otherwise return false.
+🌳 What is a Valid Tree?
+A graph is a valid tree if:
+1️⃣ It is connected :- Every node can be reached from any other node.
+2️⃣ It has no cycles :- There is no path that starts and ends at the same node.
+3️⃣ Number of edges = n - 1
+
+For a tree with n nodes: edges=n-1
+If edges > n-1 → there must be a cycle
+🧾 Example 1
+Input:
+n = 5
+edges = [[0,1],[0,2],[0,3],[1,4]]
+
+Output:
+true
+
+Explanation:
+
+    0
+  / | \
+ 1  2  3
+ |
+ 4
+
+No cycle
+
+All nodes connected
+
+Edges = 4 = n - 1
+
+✅ This is a valid tree
+
+public boolean validTree(int n, int[][] edges) {
+    // A tree MUST have exactly n-1 edges
+    if (edges.length != n - 1) return false;
+
+    // Build adjacency list
+    List<List<Integer>> adj = new ArrayList<>();
+    for (int i = 0; i < n; i++) adj.add(new ArrayList<>());
+    for (int[] e : edges) {
+        adj.get(e[0]).add(e[1]);
+        adj.get(e[1]).add(e[0]);
+    }
+
+    // BFS from node 0 — count reachable nodes
+    boolean[] visited = new boolean[n];
+    Queue<Integer> queue = new LinkedList<>();
+    queue.offer(0);  visited[0] = true;
+    int count = 0;
+    while (!queue.isEmpty()) {
+        int node = queue.poll();  count++;
+        for (int nbr : adj.get(node)) {
+            if (!visited[nbr]) {
+                visited[nbr] = true;
+                queue.offer(nbr);
+            }
+        }
+    }
+    return count == n;  // all nodes reachable?
+}
+// Time: O(V+E)  |  Space: O(V+E)
+
+
