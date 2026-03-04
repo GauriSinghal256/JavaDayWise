@@ -16,6 +16,88 @@ public class Implementation {
         }
     }
 
+    public static void printGraph(ArrayList<Edge>[] graph) {
+
+    for(int i = 0; i < graph.length; i++) {
+
+        System.out.print(i + " -> ");
+
+        for(int j = 0; j < graph[i].size(); j++) {
+            Edge e = graph[i].get(j);
+
+            System.out.print("(" + e.dest + "," + e.wt + ") ");
+        }
+
+        System.out.println();
+    }
+}
+
+
+public static void getNeighbours(ArrayList<Edge>[] graph, int v) {
+
+    for(int i = 0; i < graph[v].size(); i++) {
+        Edge e = graph[v].get(i);
+
+        System.out.println("Neighbour : " + e.dest + " weight : " + e.wt);
+    }
+}
+
+
+public static boolean hasEdge(ArrayList<Edge>[] graph, int src, int dest){
+
+    for(int i = 0; i < graph[src].size(); i++) {
+
+        Edge e = graph[src].get(i);
+
+        if(e.dest == dest) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+//  degree for undirected = total number of neighbours
+public static int degree(ArrayList<Edge>[] graph, int v){
+
+    return graph[v].size();
+}
+
+// Out-degree means edges going out from node. same as the above 
+
+// Directed Grapg in degree
+// we must scan the whole graph and count the number of edges coming into the node
+
+public static int indegree(ArrayList<Edge>[] graph, int v){
+
+    int count = 0;
+
+    for(int i = 0; i < graph.length; i++){
+
+        for(int j = 0; j < graph[i].size(); j++){
+
+            Edge e = graph[i].get(j);
+
+            if(e.dest == v){
+                count++;
+            }
+        }
+    }
+
+    return count;
+}
+
+public static int totalEdges(ArrayList<Edge>[] graph){
+
+    int count = 0;
+
+    for(int i = 0; i < graph.length; i++){
+        count += graph[i].size();
+    }
+
+    return count;
+}
+
     public static void main(String[] args) {
         int V = 5; //total number of vertices as we have to create an array of the size of total number of vertices and in that array we can easily store the lists 
         // here we have to understand it very clearly that what it is trying to say to us means how we are initialising the array 
