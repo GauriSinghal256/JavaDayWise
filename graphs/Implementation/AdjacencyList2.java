@@ -1,7 +1,10 @@
 
+// // here we are implementing for the weighted graph using adjacency list
+// here we are using array of arraylist to store the graph and in that arraylist we are storing the edge which is having source destination and weight
+
 import java.util.ArrayList;
 
-public class Implementation {
+public class AdjacencyList2 {
 
     static class Edge {
 
